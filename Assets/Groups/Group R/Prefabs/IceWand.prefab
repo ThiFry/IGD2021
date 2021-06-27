@@ -115,7 +115,7 @@ MonoBehaviour:
   isActive: 0
   posOffset: {x: 0, y: 0.7, z: 0.55}
   rotOffset: {x: 10, y: 0, z: 0}
-  strength: 4
+  strength: 0
 --- !u!54 &7455136019265426007
 Rigidbody:
   m_ObjectHideFlags: 0

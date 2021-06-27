@@ -90,12 +90,7 @@ public class OurMinifigController : MonoBehaviour
     /// The GameManagerR sets this to true if the game is over
     /// </summary>
     public bool gameOver = false;
-    
-    /// <summary>
-    /// Whether the player is hitting right now
-    /// </summary>
-    public bool isHitting = false;
-    
+
     /// <summary>
     /// The type of item that the player has at the moment. e.g. batarang
     /// </summary>
@@ -131,6 +126,13 @@ public class OurMinifigController : MonoBehaviour
     /// Whether this player has picked up an item in his hand
     /// </summary>
     public bool hasItem = false;
+
+    /// <summary>
+    /// Reference to the iceberg that moves with the player and is set to visible if the player gets frozen
+    /// </summary>
+    public GameObject iceBerg;
+
+    private bool frozen = false;
 
     public Item item = null;
 
@@ -934,19 +936,21 @@ public class OurMinifigController : MonoBehaviour
             return;
         }
         if (!hasItem)
+        {
             animator.SetTrigger(punchHash);
+            castARay(strength, hitRange);
+        }
         else
         {
             if (itemType == "batarang")
                 animator.SetTrigger(throwHash);
-            else if (itemType == "sword")
+            else if (itemType == "sword" || itemType == "ice_wand")
                 animator.SetTrigger(swordHash);
             else if (itemType== "gun"){
                 animator.SetTrigger(swordHash);
                 castARay(item.strength,1000.0f);
             }
         }
-        castARay(strength,hitRange);
     }
 
     private void castARay(int damageToInduce, float rayDistance){
@@ -1008,6 +1012,11 @@ public class OurMinifigController : MonoBehaviour
                 hit_direction.Normalize();
                 float dmg_scale = (damage + 10) * 0.01f;
                 _knockback += hit_direction * dmg_scale;
+                //handle ice_wand
+                if (collidingItem.type == "ice_wand")
+                {
+                    freeze();
+                }
                 return; //getting hit by item handling?
             }
             if (!collidingItem.isPickedUp && hasItem==false)
@@ -1054,7 +1063,6 @@ public class OurMinifigController : MonoBehaviour
     {
         if (!hasItem)
             return;
-        isHitting = hitting;
         if (hitting)
         {
             item.isActive = true;
@@ -1082,5 +1090,28 @@ public class OurMinifigController : MonoBehaviour
         if(transform.position.z > 8.4) return 2;
         if(transform.position.y > 3) return 3;
         return 1;
+    }
+
+    private void freeze()
+    {
+        if (frozen)
+        {
+            return;
+        }
+        frozen = true;
+        MeshRenderer iceBergMeshRenderer = iceBerg.GetComponent<MeshRenderer>();
+        iceBergMeshRenderer.enabled = true;
+        inputEnabled = false;
+        animator.speed = 0;
+        Invoke("unfreeze", 1);
+    }
+
+    private void unfreeze()
+    {
+        inputEnabled = true;
+        animator.speed = 1;
+        MeshRenderer iceBergMeshRenderer = iceBerg.GetComponent<MeshRenderer>();
+        iceBergMeshRenderer.enabled = false;
+        frozen = false;
     }
 }
