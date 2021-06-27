@@ -79,6 +79,9 @@ MonoBehaviour:
   doubleJumpAudioClip: {fileID: 8300000, guid: 542490ca55814441981ef88f5d1f2dc6, type: 3}
   landAudioClip: {fileID: 8300000, guid: a12caccc734354aa09f7d2a412925ac2, type: 3}
   explodeAudioClip: {fileID: 8300000, guid: b9b607b06267c4394b07c19523c455f1, type: 3}
+  throwPunchAudioClip: {fileID: 8300000, guid: a16d13149979b314b98865ccc5db5d17, type: 3}
+  receivePunchAudioClip: {fileID: 8300000, guid: 5c41dba5e5e4a414b9f292b40a72fcbb,
+    type: 3}
   inputEnabled: 1
   maxJumpsInAir: 1
 --- !u!143 &8327300910622483112

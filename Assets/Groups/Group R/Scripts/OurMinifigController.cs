@@ -144,6 +144,8 @@ public class OurMinifigController : MonoBehaviour
     public AudioClip doubleJumpAudioClip;
     public AudioClip landAudioClip;
     public AudioClip explodeAudioClip;
+    public AudioClip throwPunchAudioClip;
+    public AudioClip receivePunchAudioClip;
 
     [Header("Controls")]
     [SerializeField]
@@ -939,6 +941,7 @@ public class OurMinifigController : MonoBehaviour
         {
             animator.SetTrigger(punchHash);
             castARay(strength, hitRange);
+            audioSource.PlayOneShot(throwPunchAudioClip);
         }
         else
         {
@@ -970,6 +973,8 @@ public class OurMinifigController : MonoBehaviour
                 hit_direction.Normalize();
                 float dmg_scale = (hit_player.damage + 10) * 0.01f;
                 hit_player._knockback += hit_direction * dmg_scale;
+                audioSource.clip = receivePunchAudioClip;
+                audioSource.PlayDelayed(0.1f);
             }
         }
     }

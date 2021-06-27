@@ -3737,6 +3737,16 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1088044872}
+    - target: {fileID: 7371984904186746374, guid: d91a1032d03308145a714df114874bf6,
+        type: 3}
+      propertyPath: receivePunchAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c41dba5e5e4a414b9f292b40a72fcbb, type: 3}
+    - target: {fileID: 7371984904186746374, guid: d91a1032d03308145a714df114874bf6,
+        type: 3}
+      propertyPath: throwPunchAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a16d13149979b314b98865ccc5db5d17, type: 3}
     - target: {fileID: 7376268678405270043, guid: d91a1032d03308145a714df114874bf6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
