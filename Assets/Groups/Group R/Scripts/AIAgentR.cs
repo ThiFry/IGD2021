@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class AIAgentR : MonoBehaviour
@@ -12,31 +11,54 @@ public class AIAgentR : MonoBehaviour
     public Animator animator;
     int atRightSideUpHash = Animator.StringToHash("atRightSideUp");
     int atLeftSideUpHash = Animator.StringToHash("atLeftSideUp");
+    int recRightHash = Animator.StringToHash("recRight");
+    int recLeftHash = Animator.StringToHash("recLeft");
     bool arrived = false;
     public int id;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(arrived){
-            animator.SetTrigger(atRightSideUpHash);
-            animator.SetTrigger(atLeftSideUpHash);
-            arrived = false;
-        }
-        if (UnityEngine.Random.Range(1, 100) > 98)
+        //need to recover?
+        float z = player.transform.position.z;
+        if (z > 11 || (z > 8 && player.transform.position.y < 1))
         {
-            player.Attack();
+            animator.SetTrigger(recRightHash);
+            return;
         }
-        if (UnityEngine.Random.Range(0, 1000) < 1)
+        else if (z < -11 || (z < -8.5f && player.transform.position.y < 0.6f))
         {
+            animator.SetTrigger(recLeftHash);
+            return;
+        }
+            
+        if (target && target.died){
             animator.SetInteger("platform",-1);
+        }else{
+            if(arrived){
+                animator.SetTrigger(atRightSideUpHash);
+                animator.SetTrigger(atLeftSideUpHash);
+                arrived = false;
+            }
+            if (UnityEngine.Random.Range(0, 100) < 5)
+            {
+                player.Attack();
+            }
+            if (UnityEngine.Random.Range(0, 100) < 10)
+            {
+                Vector2 randomMovement = new Vector2(UnityEngine.Random.Range(-1, 1),UnityEngine.Random.Range(-1,1));
+                player.RightLeftJump(randomMovement);
+            }
+            if (UnityEngine.Random.Range(0, 100) < 1)
+            {
+                animator.SetInteger("platform",-1);
+            }
         }
+    }
+
+    public void SetId(int iD)
+    {
+        id = iD;
     }
 
     public bool MoveToPosition(float z)
@@ -90,7 +112,6 @@ public class AIAgentR : MonoBehaviour
     }
 
     public void chooseBehaviour(){
-        Debug.Log("Choosing Behaviour");
         //Choose player to follow
         (int[] platforms,bool[] died) = gameManager.getGameState();
         List<int> notDeadPlayers = new List<int>{};
@@ -101,7 +122,6 @@ public class AIAgentR : MonoBehaviour
         int randomChoice = UnityEngine.Random.Range(0,notDeadPlayers.Count);
         target = gameManager.getPlayer(randomChoice);
         animator.SetInteger("platform",target.getPlatform());
-        Debug.Log(target.getPlatform().ToString());
     }
 
     public void attackTarget(){
@@ -112,5 +132,7 @@ public class AIAgentR : MonoBehaviour
         }
         player.Attack();
     }
+
+    public void nothing(){}
 }
 

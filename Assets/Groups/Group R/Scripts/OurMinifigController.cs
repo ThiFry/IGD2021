@@ -90,12 +90,7 @@ public class OurMinifigController : MonoBehaviour
     /// The GameManagerR sets this to true if the game is over
     /// </summary>
     public bool gameOver = false;
-    
-    /// <summary>
-    /// Whether the player is hitting right now
-    /// </summary>
-    public bool isHitting = false;
-    
+
     /// <summary>
     /// The type of item that the player has at the moment. e.g. batarang
     /// </summary>
@@ -132,6 +127,13 @@ public class OurMinifigController : MonoBehaviour
     /// </summary>
     public bool hasItem = false;
 
+    /// <summary>
+    /// Reference to the iceberg that moves with the player and is set to visible if the player gets frozen
+    /// </summary>
+    public GameObject iceBerg;
+
+    private bool frozen = false;
+
     public Item item = null;
 
 
@@ -142,6 +144,8 @@ public class OurMinifigController : MonoBehaviour
     public AudioClip doubleJumpAudioClip;
     public AudioClip landAudioClip;
     public AudioClip explodeAudioClip;
+    public AudioClip throwPunchAudioClip;
+    public AudioClip receivePunchAudioClip;
 
     [Header("Controls")]
     [SerializeField]
@@ -934,20 +938,31 @@ public class OurMinifigController : MonoBehaviour
             return;
         }
         if (!hasItem)
+        {
             animator.SetTrigger(punchHash);
+            castARay(strength, hitRange);
+            audioSource.PlayOneShot(throwPunchAudioClip);
+        }
         else
         {
             if (itemType == "batarang")
                 animator.SetTrigger(throwHash);
-            else if (itemType == "sword")
+            else if (itemType == "sword" || itemType == "ice_wand")
                 animator.SetTrigger(swordHash);
+            else if (itemType== "gun"){
+                animator.SetTrigger(swordHash);
+                castARay(item.strength,1000.0f);
+            }
         }
+    }
+
+    private void castARay(int damageToInduce, float rayDistance){
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, hitRange))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDistance))
         {
             if(hit.collider.tag == "Player"){
                 OurMinifigController hit_player = hit.collider.gameObject.GetComponent<OurMinifigController>();
-                hit_player.damage += strength;
+                hit_player.damage += damageToInduce;
                 Vector3 hit_direction = hit_player.transform.position - transform.position;
                 hit_direction.x = 0f; // do not change x position
                 hit_direction.y += 1f; // make the hit player fly slightly upwards
@@ -958,6 +973,8 @@ public class OurMinifigController : MonoBehaviour
                 hit_direction.Normalize();
                 float dmg_scale = (hit_player.damage + 10) * 0.01f;
                 hit_player._knockback += hit_direction * dmg_scale;
+                audioSource.clip = receivePunchAudioClip;
+                audioSource.PlayDelayed(0.1f);
             }
         }
     }
@@ -1000,6 +1017,11 @@ public class OurMinifigController : MonoBehaviour
                 hit_direction.Normalize();
                 float dmg_scale = (damage + 10) * 0.01f;
                 _knockback += hit_direction * dmg_scale;
+                //handle ice_wand
+                if (collidingItem.type == "ice_wand")
+                {
+                    freeze();
+                }
                 return; //getting hit by item handling?
             }
             if (!collidingItem.isPickedUp && hasItem==false)
@@ -1022,6 +1044,8 @@ public class OurMinifigController : MonoBehaviour
 
     public void fix()
     {
+        if (!hasItem)
+            return;
         SetInputEnabled(false);
         float yrot = transform.rotation.eulerAngles.y;
         if (yrot < 90 || yrot > 270)
@@ -1033,6 +1057,8 @@ public class OurMinifigController : MonoBehaviour
 
     public void release()
     {
+        if (!hasItem)
+            return;
         SetInputEnabled(true);
         item.isActive = false;
         usedItem();
@@ -1040,7 +1066,8 @@ public class OurMinifigController : MonoBehaviour
 
     public void setHitting(bool hitting)
     {
-        isHitting = hitting;
+        if (!hasItem)
+            return;
         if (hitting)
         {
             item.isActive = true;
@@ -1068,5 +1095,28 @@ public class OurMinifigController : MonoBehaviour
         if(transform.position.z > 8.4) return 2;
         if(transform.position.y > 3) return 3;
         return 1;
+    }
+
+    private void freeze()
+    {
+        if (frozen)
+        {
+            return;
+        }
+        frozen = true;
+        MeshRenderer iceBergMeshRenderer = iceBerg.GetComponent<MeshRenderer>();
+        iceBergMeshRenderer.enabled = true;
+        inputEnabled = false;
+        animator.speed = 0;
+        Invoke("unfreeze", 1);
+    }
+
+    private void unfreeze()
+    {
+        inputEnabled = true;
+        animator.speed = 1;
+        MeshRenderer iceBergMeshRenderer = iceBerg.GetComponent<MeshRenderer>();
+        iceBergMeshRenderer.enabled = false;
+        frozen = false;
     }
 }

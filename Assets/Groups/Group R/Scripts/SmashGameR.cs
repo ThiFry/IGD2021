@@ -22,6 +22,10 @@ public class SmashGameR : MiniGame
     public Vector3 secondPos;
     public Vector3 thirdPos;
     public Vector3 fourthPos;
+    public AIAgentR AI1;
+    public AIAgentR AI2;
+    public AIAgentR AI3;
+    public AIAgentR AI4;
 
     public Countdown countdown;
     public int gameDuration;
@@ -58,7 +62,14 @@ public class SmashGameR : MiniGame
         //This assigns the player input in the order they were given in the array
         InputManager.Instance.AssignPlayerInput(playerInputs);
 
-        bool player1_AI = PlayerPrefs.GetString("Player1_AI").Equals("True");
+        AI1.gameObject.SetActive(PlayerPrefs.GetString("Player1_AI").Equals("True"));
+        AI1.SetId(1);
+        AI2.gameObject.SetActive(PlayerPrefs.GetString("Player2_AI").Equals("True"));
+        AI2.SetId(2);
+        AI3.gameObject.SetActive(PlayerPrefs.GetString("Player3_AI").Equals("True"));
+        AI3.SetId(3);
+        AI4.gameObject.SetActive(PlayerPrefs.GetString("Player4_AI").Equals("True"));
+        AI4.SetId(4);
 
         endTime = Time.time + gameDuration + 3;
         countdown.StartCountDown(1);

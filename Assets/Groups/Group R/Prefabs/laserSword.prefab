@@ -169,7 +169,7 @@ MonoBehaviour:
   isActive: 0
   posOffset: {x: 0, y: -0.33, z: 0.3}
   rotOffset: {x: 15, y: -5.2, z: 0}
-  strength: 20
+  strength: 8
 --- !u!1 &2257857434609970604
 GameObject:
   m_ObjectHideFlags: 0

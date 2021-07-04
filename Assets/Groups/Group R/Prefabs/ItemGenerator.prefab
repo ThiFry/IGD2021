@@ -46,7 +46,11 @@ MonoBehaviour:
   ItemPrefabs:
   - {fileID: 1740463500686128263, guid: 77b7bceb354a68b8a9ee743ad80fc30f, type: 3}
   - {fileID: 6742602598438684356, guid: 92eb8bb83514c9e3b8de052f152daf45, type: 3}
+  - {fileID: 7600720794240620569, guid: 6071981c32fb20130b60943bcbc36a4e, type: 3}
+  - {fileID: 5325799895029996920, guid: 23d3551c6e0e64c75aa088dcdaf81d2c, type: 3}
+  - {fileID: 712862533499861736, guid: 324bb8a37d61404428cd9dec53773895, type: 3}
   spawnHeight: 7
   minSpawnZ: -7
   maxSpawnZ: 7
-  maxSpawnTime: 20
+  maxSpawnTime: 10
+  minSpawnTime: 3
