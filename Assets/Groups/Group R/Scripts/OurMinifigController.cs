@@ -960,7 +960,7 @@ public class OurMinifigController : MonoBehaviour
         {
             animator.SetTrigger(punchHash);
             castARay(strength, hitRange);
-            audioSource.PlayOneShot(throwPunchAudioClip);
+            audioSource.PlayOneShot(throwPunchAudioClip,0.1f);
            
         }
         else

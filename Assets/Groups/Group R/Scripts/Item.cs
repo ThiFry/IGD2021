@@ -25,7 +25,6 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        freezePosition();
         if (!isPickedUp)
         {
             transform.Rotate(new Vector3(0f, 2.0f, 0f), Space.World);
