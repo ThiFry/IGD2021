@@ -25,6 +25,7 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        freezePosition();
         if (!isPickedUp)
         {
             transform.Rotate(new Vector3(0f, 2.0f, 0f), Space.World);
@@ -51,4 +52,29 @@ public class Item : MonoBehaviour
         return true;
     }
 
+    void freezePosition()
+    {
+        GameObject gameObj = GameObject.FindWithTag("Player");
+        GameObject item = GameObject.FindWithTag("Item");
+        Vector3 pos = item.transform.position;
+        BoxCollider collider = item.GetComponent<BoxCollider>();
+        Physics.IgnoreLayerCollision(18, 18);
+
+        if (!gameObj.GetComponent<OurMinifigController>().hasItem)
+        {
+            if (!isPickedUp)
+            {
+                item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                Physics.IgnoreLayerCollision(18, 9, false);
+
+
+            }
+            else if(isPickedUp)
+            {
+                Physics.IgnoreLayerCollision(18, 9,true);
+              
+            }
+        }
+        
+    }
 }
