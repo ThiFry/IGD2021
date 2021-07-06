@@ -14,7 +14,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 90
   m_CollisionDetection: 0
 --- !u!65 &401173701
 BoxCollider:
@@ -27,7 +27,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &401173700
 MonoBehaviour:
@@ -41,13 +41,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6bb907921fff11b9573117f27a8aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: umbrella
+  type: umbrellal
   isPickedUp: 0
   usesLeft: 10
   isActive: 0
   posOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
-  strength: 20
+  strength: 0
 --- !u!1001 &7992138883740731720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 031f0a33d046fea4db7877bb416d40df,
         type: 3}
       propertyPath: m_Name
-      value: umbrella
+      value: umbrellaI
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 031f0a33d046fea4db7877bb416d40df,
         type: 3}

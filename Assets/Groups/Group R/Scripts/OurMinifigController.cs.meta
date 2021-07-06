@@ -3,7 +3,25 @@ guid: e2c784fcec7fcb32fa6a85d46a530f28
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Minifig: {instanceID: 0}
+  - iceBerg: {instanceID: 0}
+  - item: {instanceID: 0}
+  - mainMusic: {fileID: 8300000, guid: 06601fe0df5b1eb49a75fc7b27d47ac6, type: 3}
+  - jumpAudioClip: {instanceID: 0}
+  - doubleJumpAudioClip: {instanceID: 0}
+  - landAudioClip: {instanceID: 0}
+  - explodeAudioClip: {instanceID: 0}
+  - throwPunchAudioClip: {instanceID: 0}
+  - receivePunchAudioClip: {instanceID: 0}
+  - Lichtschwert_soundAudioClip: {instanceID: 0}
+  - introAudioClip: {instanceID: 0}
+  - deadAudioClip: {instanceID: 0}
+  - applausAudioClip: {instanceID: 0}
+  - smallGunAudioClip: {instanceID: 0}
+  - bigGunAudioClip: {instanceID: 0}
+  - batAudioClip: {instanceID: 0}
+  - boomerangAudioClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -140,18 +140,29 @@ public class OurMinifigController : MonoBehaviour
     [Header("Audio")]
 
     public List<AudioClip> stepAudioClips = new List<AudioClip>();
+   
+
     public AudioClip jumpAudioClip;
     public AudioClip doubleJumpAudioClip;
     public AudioClip landAudioClip;
     public AudioClip explodeAudioClip;
     public AudioClip throwPunchAudioClip;
     public AudioClip receivePunchAudioClip;
+    
+    public AudioClip Lichtschwert_soundAudioClip;
+    public AudioClip introAudioClip;
+    public AudioClip deadAudioClip;
+    public AudioClip applausAudioClip;
+    public AudioClip smallGunAudioClip;
+    public AudioClip bigGunAudioClip;
+    public AudioClip batAudioClip;
+    public AudioClip boomerangAudioClip;
 
     [Header("Controls")]
     [SerializeField]
     bool inputEnabled = true;
     [SerializeField, Range(0, 10)]
-    int maxJumpsInAir = 1;
+    int maxJumpsInAir = 5;
 
     public enum SpecialAnimation
     {
@@ -273,6 +284,12 @@ public class OurMinifigController : MonoBehaviour
     {
         string controlScheme = GetComponent<PlayerInput>().defaultControlScheme;
         GetComponent<PlayerInput>().SwitchCurrentControlScheme(controlScheme, Keyboard.current);
+        audioSource.PlayOneShot(introAudioClip);
+        audioSource.PlayDelayed(0.5f);
+        
+
+
+
     }
 
     void Update()
@@ -837,8 +854,9 @@ public class OurMinifigController : MonoBehaviour
     {
         var completeFunc = currentTurnTarget.onComplete;
         currentTurnTarget = null;
-
+       
         completeFunc?.Invoke();
+        Debug.Log("Gewonnen");
 
         UpdateState();
     }
@@ -929,6 +947,7 @@ public class OurMinifigController : MonoBehaviour
     private void OnSouthPress()
     {
         Attack();
+       
     }
 
     public void Attack()
@@ -942,16 +961,38 @@ public class OurMinifigController : MonoBehaviour
             animator.SetTrigger(punchHash);
             castARay(strength, hitRange);
             audioSource.PlayOneShot(throwPunchAudioClip);
+           
         }
         else
         {
-            if (itemType == "batarang")
+            if (itemType == "batarang" || itemType == "legosteinl")
+            {
                 animator.SetTrigger(throwHash);
-            else if (itemType == "sword" || itemType == "ice_wand")
+                audioSource.PlayOneShot(boomerangAudioClip);
+            }
+            else if (itemType == "sword")
+            {
                 animator.SetTrigger(swordHash);
-            else if (itemType== "gun"){
+                audioSource.PlayOneShot(Lichtschwert_soundAudioClip);
+            }
+            else if (itemType == "baseballbatl")
+            {
                 animator.SetTrigger(swordHash);
-                castARay(item.strength,1000.0f);
+                audioSource.PlayOneShot(batAudioClip);
+            }
+            else if (itemType == "ice_wand" || itemType == "hammerl")
+            {
+                animator.SetTrigger(swordHash);
+            }
+            else if (itemType == "gun")
+            {
+                animator.SetTrigger(swordHash);
+                castARay(item.strength, 1000.0f);
+                audioSource.PlayOneShot(smallGunAudioClip);
+            }
+            else if (itemType == "gunl"){
+                castARay(item.strength, 2000.0f);
+                audioSource.PlayOneShot(bigGunAudioClip);
             }
         }
     }
@@ -975,6 +1016,7 @@ public class OurMinifigController : MonoBehaviour
                 hit_player._knockback += hit_direction * dmg_scale;
                 audioSource.clip = receivePunchAudioClip;
                 audioSource.PlayDelayed(0.1f);
+                
             }
         }
     }
