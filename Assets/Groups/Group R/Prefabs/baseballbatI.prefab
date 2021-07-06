@@ -45,8 +45,8 @@ MonoBehaviour:
   isPickedUp: 0
   usesLeft: 10
   isActive: 0
-  posOffset: {x: 0, y: 0, z: 0}
-  rotOffset: {x: 0, y: 0, z: 0}
+  posOffset: {x: 0, y: -0.539, z: 0.327}
+  rotOffset: {x: -84.68, y: 0, z: 0}
   strength: 20
 --- !u!1001 &1382021156770533721
 PrefabInstance:
@@ -113,17 +113,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2c6b7cae8a21f9247b483f4515d06167,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c6b7cae8a21f9247b483f4515d06167,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c6b7cae8a21f9247b483f4515d06167,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 2c6b7cae8a21f9247b483f4515d06167,
         type: 3}

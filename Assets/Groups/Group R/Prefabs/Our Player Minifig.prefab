@@ -82,6 +82,15 @@ MonoBehaviour:
   throwPunchAudioClip: {fileID: 8300000, guid: a16d13149979b314b98865ccc5db5d17, type: 3}
   receivePunchAudioClip: {fileID: 8300000, guid: 5c41dba5e5e4a414b9f292b40a72fcbb,
     type: 3}
+  Lichtschwert_soundAudioClip: {fileID: 8300000, guid: d7901632a4b58d5489f0da5bef99fcd6,
+    type: 3}
+  introAudioClip: {fileID: 8300000, guid: 8459b3b0cae46ab4e9806b80dbedd89b, type: 3}
+  deadAudioClip: {fileID: 8300000, guid: d4481537918061e4889a00ef4a557ea5, type: 3}
+  applausAudioClip: {fileID: 8300000, guid: 7e6b740f682d7db459127695ed278441, type: 3}
+  smallGunAudioClip: {fileID: 8300000, guid: 4c63c63267535234dab1f134eff41143, type: 3}
+  bigGunAudioClip: {fileID: 8300000, guid: 8bf864fd9866a134db210275b1acfe86, type: 3}
+  batAudioClip: {fileID: 8300000, guid: cbf25ed6f5fa5ec4292c002cb2096218, type: 3}
+  boomerangAudioClip: {fileID: 8300000, guid: f03c48ee5315ba844a987c4c8571d6d4, type: 3}
   inputEnabled: 1
   maxJumpsInAir: 1
 --- !u!143 &8327300910622483112

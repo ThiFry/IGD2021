@@ -48,6 +48,9 @@ MonoBehaviour:
   - {fileID: 6742602598438684356, guid: 92eb8bb83514c9e3b8de052f152daf45, type: 3}
   - {fileID: 7600720794240620569, guid: 6071981c32fb20130b60943bcbc36a4e, type: 3}
   - {fileID: 5325799895029996920, guid: 23d3551c6e0e64c75aa088dcdaf81d2c, type: 3}
+  - {fileID: 2300359996475239432, guid: 5b25809df977209478d12c4ac539186e, type: 3}
+  - {fileID: 1515371797965066989, guid: dfe37807703c9d54f957641febbcb764, type: 3}
+  - {fileID: 5297224241103425616, guid: 32fc696c5ed6d3b47a4ffcef048ab3f1, type: 3}
   - {fileID: 712862533499861736, guid: 324bb8a37d61404428cd9dec53773895, type: 3}
   spawnHeight: 7
   minSpawnZ: -7
