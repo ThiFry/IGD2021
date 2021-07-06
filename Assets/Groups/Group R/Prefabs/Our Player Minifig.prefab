@@ -82,9 +82,8 @@ MonoBehaviour:
   throwPunchAudioClip: {fileID: 8300000, guid: a16d13149979b314b98865ccc5db5d17, type: 3}
   receivePunchAudioClip: {fileID: 8300000, guid: 5c41dba5e5e4a414b9f292b40a72fcbb,
     type: 3}
-  Lichtschwert_soundAudioClip: {fileID: 8300000, guid: d7901632a4b58d5489f0da5bef99fcd6,
-    type: 3}
-  introAudioClip: {fileID: 8300000, guid: 8459b3b0cae46ab4e9806b80dbedd89b, type: 3}
+  LaserAudio1: {fileID: 8300000, guid: ec554a8d7ed0df94aa6fc877a3ad1438, type: 3}
+  LaserAudio2: {fileID: 8300000, guid: 92f92d437de8ddc4bb16fcc508d5197e, type: 3}
   deadAudioClip: {fileID: 8300000, guid: d4481537918061e4889a00ef4a557ea5, type: 3}
   applausAudioClip: {fileID: 8300000, guid: 7e6b740f682d7db459127695ed278441, type: 3}
   smallGunAudioClip: {fileID: 8300000, guid: 4c63c63267535234dab1f134eff41143, type: 3}

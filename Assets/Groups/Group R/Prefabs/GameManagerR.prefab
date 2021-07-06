@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a310d7b30739f849b72935712f15b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _finishGamePrefab: {fileID: 8914169427414623133, guid: eb80993c89a63a540bed42b779731471,
-    type: 3}
+  _finishGamePrefab: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
   player3: {fileID: 0}
@@ -57,5 +56,9 @@ MonoBehaviour:
   secondPos: {x: 0, y: 1.4, z: 9}
   thirdPos: {x: 0, y: 0.9, z: -9}
   fourthPos: {x: 0, y: -0.56, z: -2}
+  AI1: {fileID: 0}
+  AI2: {fileID: 0}
+  AI3: {fileID: 0}
+  AI4: {fileID: 0}
   countdown: {fileID: 0}
-  gameDuration: 300
+  gameDuration: 160

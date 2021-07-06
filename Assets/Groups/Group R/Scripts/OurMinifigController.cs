@@ -149,7 +149,8 @@ public class OurMinifigController : MonoBehaviour
     public AudioClip throwPunchAudioClip;
     public AudioClip receivePunchAudioClip;
     
-    public AudioClip Lichtschwert_soundAudioClip;
+    public AudioClip LaserAudio1;
+    public AudioClip LaserAudio2;
     public AudioClip deadAudioClip;
     public AudioClip applausAudioClip;
     public AudioClip smallGunAudioClip;
@@ -972,7 +973,10 @@ public class OurMinifigController : MonoBehaviour
             else if (itemType == "sword")
             {
                 animator.SetTrigger(swordHash);
-                audioSource.PlayOneShot(Lichtschwert_soundAudioClip);
+                if (UnityEngine.Random.Range(0, 2) > 0)
+                    audioSource.PlayOneShot(LaserAudio1);
+                else
+                    audioSource.PlayOneShot(LaserAudio2);
             }
             else if (itemType == "knive")
             {
