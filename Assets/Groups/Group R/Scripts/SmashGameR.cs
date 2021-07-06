@@ -28,6 +28,7 @@ public class SmashGameR : MiniGame
     public AIAgentR AI4;
 
     public Countdown countdown;
+    public AudioSource audioSource;
     public int gameDuration;
 
     private float endTime;
@@ -64,11 +65,11 @@ public class SmashGameR : MiniGame
 
         AI1.gameObject.SetActive(PlayerPrefs.GetString("Player1_AI").Equals("True"));
         AI1.SetId(1);
-        AI2.gameObject.SetActive(PlayerPrefs.GetString("Player2_AI").Equals("True"));
+        AI2.gameObject.SetActive(false);// PlayerPrefs.GetString("Player2_AI").Equals("True"));
         AI2.SetId(2);
-        AI3.gameObject.SetActive(PlayerPrefs.GetString("Player3_AI").Equals("True"));
+        AI3.gameObject.SetActive(false);// PlayerPrefs.GetString("Player3_AI").Equals("True"));
         AI3.SetId(3);
-        AI4.gameObject.SetActive(PlayerPrefs.GetString("Player4_AI").Equals("True"));
+        AI4.gameObject.SetActive(false);// PlayerPrefs.GetString("Player4_AI").Equals("True"));
         AI4.SetId(4);
 
         endTime = Time.time + gameDuration + 3;
@@ -90,6 +91,7 @@ public class SmashGameR : MiniGame
             startedGame = true;
             foreach (OurMinifigController p in players)
                 p.SetInputEnabled(true);
+            audioSource.Play();
         }
         if (timeLeft < 0)
         {
@@ -101,6 +103,7 @@ public class SmashGameR : MiniGame
         {
             endCountdownCalled = true;
             countdown.StartCountDown(2);
+            audioSource.Stop();
         }
 
         //Check if players died to determine place
@@ -120,7 +123,7 @@ public class SmashGameR : MiniGame
             endTime = Time.time; //-> timeLeft = 0
             place -= 1;
             countdown.StartCountDown(0);
-            
+            audioSource.Stop();
         }
 
         if (timeLeft < -1)
