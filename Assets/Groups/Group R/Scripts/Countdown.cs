@@ -8,6 +8,9 @@ public class Countdown : MonoBehaviour
     float timeAtStart;
     string txt_after_cntdwn;
 
+    public AudioSource audioSource;
+    public AudioClip countdownAudioClip;
+
     // Update is called once per frame
     void Update()
     {
@@ -39,11 +42,13 @@ public class Countdown : MonoBehaviour
         if (type == 1){
             //Start of game
             txt_after_cntdwn = "Smash!";
+            audioSource.PlayOneShot(countdownAudioClip);
         }
         else if (type == 2)
         {
             //Maximum game time has been reacheds
             txt_after_cntdwn = "Time's Up!";
+            audioSource.PlayOneShot(countdownAudioClip);
         }
         else
         {

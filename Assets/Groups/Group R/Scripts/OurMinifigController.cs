@@ -150,7 +150,6 @@ public class OurMinifigController : MonoBehaviour
     public AudioClip receivePunchAudioClip;
     
     public AudioClip Lichtschwert_soundAudioClip;
-    public AudioClip introAudioClip;
     public AudioClip deadAudioClip;
     public AudioClip applausAudioClip;
     public AudioClip smallGunAudioClip;
@@ -285,7 +284,6 @@ public class OurMinifigController : MonoBehaviour
     {
         string controlScheme = GetComponent<PlayerInput>().defaultControlScheme;
         GetComponent<PlayerInput>().SwitchCurrentControlScheme(controlScheme, Keyboard.current);
-        audioSource.PlayOneShot(introAudioClip);
         audioSource.PlayDelayed(0.5f);
         
 
