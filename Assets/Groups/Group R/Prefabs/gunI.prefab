@@ -45,8 +45,8 @@ MonoBehaviour:
   isPickedUp: 0
   usesLeft: 10
   isActive: 0
-  posOffset: {x: 0, y: 0, z: 0}
-  rotOffset: {x: 0, y: 0, z: 0}
+  posOffset: {x: 0.45, y: 1.16, z: 1.47}
+  rotOffset: {x: -65.2, y: -220, z: 46.44}
   strength: 20
 --- !u!1001 &1857391038391873468
 PrefabInstance:
