@@ -1260,11 +1260,6 @@ PrefabInstance:
       propertyPath: AI4
       value: 
       objectReference: {fileID: 1351545865}
-    - target: {fileID: 767390717738652016, guid: 6c28a69bd513896b4b54dc1e1be122d5,
-        type: 3}
-      propertyPath: gameDuration
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 767390717738652017, guid: 6c28a69bd513896b4b54dc1e1be122d5,
         type: 3}
       propertyPath: m_Name

@@ -63,6 +63,7 @@ MonoBehaviour:
   AI4: {fileID: 0}
   countdown: {fileID: 0}
   audioSource: {fileID: 460728284188870986}
+  endJingle: {fileID: 8300000, guid: 4a2e6e1ca0e7758408fb4479f7521a8b, type: 3}
   gameDuration: 160
 --- !u!82 &460728284188870986
 AudioSource:

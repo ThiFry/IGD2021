@@ -29,6 +29,7 @@ public class SmashGameR : MiniGame
 
     public Countdown countdown;
     public AudioSource audioSource;
+    public AudioClip endJingle;
     public int gameDuration;
 
     private float endTime;
@@ -37,6 +38,7 @@ public class SmashGameR : MiniGame
     private bool startCountdownCalled = false;
     private bool startedGame = false;
     private bool endCountdownCalled = false;
+    private bool playedEndJingle = false;
 
     public override string getDisplayName()
     {
@@ -103,7 +105,6 @@ public class SmashGameR : MiniGame
         {
             endCountdownCalled = true;
             countdown.StartCountDown(2);
-            audioSource.Stop();
         }
 
         //Check if players died to determine place
@@ -123,11 +124,16 @@ public class SmashGameR : MiniGame
             endTime = Time.time; //-> timeLeft = 0
             place -= 1;
             countdown.StartCountDown(0);
-            audioSource.Stop();
         }
 
         if (timeLeft < -1)
         {
+            if (!playedEndJingle)
+            {
+                playedEndJingle = true;
+                audioSource.Stop();
+                audioSource.PlayOneShot(endJingle);
+            }
             foreach (OurMinifigController p in players)
             {
                 switch (p.place)
