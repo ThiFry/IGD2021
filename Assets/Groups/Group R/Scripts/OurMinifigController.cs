@@ -259,6 +259,7 @@ public class OurMinifigController : MonoBehaviour
     int punchHash = Animator.StringToHash("Punch");
     int swordHash = Animator.StringToHash("Sword");
     int throwHash = Animator.StringToHash("Throw");
+    int shootHash = Animator.StringToHash("Shoot");
 
     Action<bool> onSpecialComplete;
 
@@ -975,6 +976,10 @@ public class OurMinifigController : MonoBehaviour
                 animator.SetTrigger(swordHash);
                 audioSource.PlayOneShot(Lichtschwert_soundAudioClip);
             }
+            else if (itemType == "knive")
+            {
+                animator.SetTrigger(swordHash);
+            }
             else if (itemType == "baseballbatl")
             {
                 animator.SetTrigger(swordHash);
@@ -986,12 +991,13 @@ public class OurMinifigController : MonoBehaviour
             }
             else if (itemType == "gun")
             {
-                animator.SetTrigger(swordHash);
+                animator.SetTrigger(shootHash);
                 castARay(item.strength, 1000.0f);
                 audioSource.PlayOneShot(smallGunAudioClip);
             }
             else if (itemType == "gunl"){
-                castARay(item.strength, 2000.0f);
+                animator.SetTrigger(shootHash);
+                castARay(item.strength, 1000.0f);
                 audioSource.PlayOneShot(bigGunAudioClip);
             }
         }

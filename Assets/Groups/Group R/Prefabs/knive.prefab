@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6bb907921fff11b9573117f27a8aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: sword
+  type: knive
   isPickedUp: 0
   usesLeft: 5
   isActive: 0
