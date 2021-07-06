@@ -986,21 +986,25 @@ public class OurMinifigController : MonoBehaviour
             {
                 animator.SetTrigger(swordHash);
                 audioSource.PlayOneShot(batAudioClip);
+                Invoke("usedItem", 0.5f);
             }
             else if (itemType == "ice_wand" || itemType == "hammerl")
             {
                 animator.SetTrigger(swordHash);
+                Invoke("usedItem", 0.5f);
             }
             else if (itemType == "gun")
             {
                 animator.SetTrigger(shootHash);
                 castARay(item.strength, 1000.0f);
                 audioSource.PlayOneShot(smallGunAudioClip);
+                Invoke("usedItem", 0.5f);
             }
             else if (itemType == "gunl"){
                 animator.SetTrigger(shootHash);
                 castARay(item.strength, 1000.0f);
                 audioSource.PlayOneShot(bigGunAudioClip);
+                Invoke("usedItem", 0.5f);
             }
         }
     }
